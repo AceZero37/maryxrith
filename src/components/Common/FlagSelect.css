@@ -1,0 +1,213 @@
+/* Flag Select Container */
+.flag-select-container {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  z-index: 1000;
+  font-family: 'Battambang', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Trigger Button */
+.flag-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 18, 48, 0.72);
+  color: #ffe873;
+  border: 1.5px solid rgba(255, 232, 115, 0.45);
+  border-radius: 9999px;
+  padding: 6px 14px 6px 8px;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 232, 115, 0.15);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flag-select-trigger:hover {
+  background: rgba(35, 28, 75, 0.88);
+  border-color: #ffe873;
+  color: #ffffff;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 232, 115, 0.35);
+  transform: translateY(-1px);
+}
+
+.flag-select-trigger.is-open {
+  border-color: #ffe873;
+  background: rgba(40, 30, 85, 0.95);
+  box-shadow: 0 0 18px rgba(255, 232, 115, 0.45);
+}
+
+/* Flag Image Wrapper */
+.flag-img-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 17px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.flag-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Current Label in Trigger */
+.flag-current-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+/* Arrow / Chevron Icon */
+.flag-arrow-icon {
+  color: #ffe873;
+  transition: transform 0.25s ease;
+  margin-left: 2px;
+}
+
+.flag-arrow-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.flag-select-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 190px;
+  background: rgba(18, 14, 40, 0.94);
+  border: 1px solid rgba(255, 232, 115, 0.35);
+  border-radius: 14px;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(255, 232, 115, 0.2);
+  animation: flagDropdownSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top right;
+  z-index: 1001;
+}
+
+@keyframes flagDropdownSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.flag-dropdown-header {
+  padding: 6px 10px 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e7d38d;
+  opacity: 0.8;
+  border-bottom: 1px solid rgba(255, 232, 115, 0.15);
+  margin-bottom: 4px;
+}
+
+/* Dropdown Option Items */
+.flag-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #f7f3e8;
+  outline: none;
+}
+
+.flag-select-option:hover,
+.flag-select-option:focus-visible {
+  background: rgba(255, 232, 115, 0.14);
+  color: #ffe873;
+  transform: translateX(-2px);
+}
+
+.flag-select-option.selected {
+  background: rgba(127, 83, 172, 0.32);
+  border: 1px solid rgba(255, 232, 115, 0.35);
+  color: #ffe873;
+}
+
+.flag-option-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flag-option-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.flag-primary-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.flag-sub-text {
+  font-size: 0.72rem;
+  color: #d1c8b3;
+  opacity: 0.75;
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+.flag-select-option.selected .flag-sub-text {
+  color: #ffe873;
+  opacity: 0.9;
+}
+
+.flag-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: checkPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .flag-select-trigger {
+    padding: 5px 10px 5px 6px;
+    gap: 6px;
+  }
+  
+  .flag-img-wrapper {
+    width: 22px;
+    height: 15px;
+  }
+
+  .flag-current-label {
+    font-size: 0.85rem;
+  }
+
+  .flag-select-dropdown {
+    min-width: 175px;
+  }
+}

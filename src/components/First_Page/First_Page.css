@@ -1,0 +1,230 @@
+@font-face {
+  font-family: 'Khmer OS Muol Light';
+  src: url('/fonts/KhmerOS_muollight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==== BACKGROUND ==== */
+.first-page-bg {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background: url('wedding-bg.jpg') center center/cover no-repeat;
+  overflow: hidden;
+}
+.first-page-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 21, 50, 0.55);
+  z-index: 1;
+  animation: floatOverlay 5s ease-in-out infinite alternate;
+}
+@keyframes floatOverlay {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-12px); }
+}
+
+/* ==== CONTENT & ANIMATION ==== */
+.first-page-content {
+  position: relative;
+  z-index: 2;
+  color: #f9f6e9;
+  padding: 2rem;
+  animation: fadeInUp 1.1s cubic-bezier(.28,.84,.42,1) both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==== TITLES ==== */
+.first-page-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  color: #ffe873;
+  letter-spacing: 0.2em;
+  animation: popIn 1.3s cubic-bezier(.4,0,.2,1) 0.2s both;
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) rotate(-6deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ==== NAMES ==== */
+.first-page-names {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 1.1rem;
+  line-height: 1.18;
+}
+.first-page-names.en {
+  /* English: Typing animation + Times New Roman */
+  font-family: 'Times New Roman', Times, serif;
+  color: #ffe873;
+  font-size: 2.1rem;
+  overflow: hidden;
+  border-right: .08em solid #ffe873;
+  white-space: nowrap;
+  animation:
+    typing 2.2s steps(30, end) 0.5s 1 normal both,
+    blink-caret .75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to   { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50%      { border-color: #ffe873; }
+}
+.first-page-names.kh {
+  font-family: 'Battambang', Arial, sans-serif !important;
+  color: #ffe873;
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+  line-height: 1.18;
+  /* Animation for Khmer: popIn (same as title) */
+  opacity: 0;
+  animation: khmerPopIn 1.4s cubic-bezier(.4,0,.2,1) 0.5s both;
+}
+
+@keyframes khmerPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-3deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.11) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+
+/* ==== SUBTITLE ==== */
+.first-page-subtitle {
+  font-weight: bold;
+  color: #ffe873;
+  font-family: 'Times New Roman', Times, serif;
+  opacity: 0;
+  animation: fadeInUp 1s 1.8s both;
+}
+.first-page-subtitle.kh {
+  font-family: 'Battambang', Arial, sans-serif !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  line-height: 1.22;
+}
+
+/* ==== BUTTON ==== */
+.first-page-btn {
+  font-size: 1.3rem;
+  border-radius: 2em;
+  padding: 0.7em 2.5em;
+  background: linear-gradient(90deg, #7f53ac 0%, #647dee 100%);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s 2.1s both;
+}
+.first-page-btn.kh {
+  font-family: 'Battambang', Arial, sans-serif !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.first-page-btn::after {
+  content: "";
+  position: absolute;
+  left: -70%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.65) 100%);
+  transform: skewX(-25deg);
+  transition: left 0.5s cubic-bezier(.4,0,.2,1);
+}
+.first-page-btn:hover::after {
+  left: 120%;
+}
+.first-page-btn:hover {
+  opacity: 0.92;
+}
+
+/* ==== THANK YOU ==== */
+.first-page-thank {
+  margin-top: 1.2em;
+  color: #eee7ca;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+  opacity: 0;
+  animation: fadeIn 1s 2.5s both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ==== MUSIC BUTTON ==== */
+.music-btn-animate {
+  animation: music-pulse 1s infinite alternate;
+  box-shadow: 0 0 20px 3px #d7266077, 0 1.5px 10px #ffe87388;
+}
+@keyframes music-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 14px 3px #d7266044, 0 1.5px 8px #ffe87366;
+  }
+  100% {
+    transform: scale(1.13) rotate(-3deg);
+    box-shadow: 0 0 28px 8px #d72660cc, 0 2.5px 18px #ffe873aa;
+  }
+}
+.music-btn-hover:hover {
+  filter: brightness(1.05) drop-shadow(0 2px 16px #ffe4e188);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 600px) {
+  .first-page-content {
+    padding: 1.1rem 0.7rem;
+  }
+  .first-page-title {
+    font-size: 2rem;
+  }
+  .first-page-names.en {
+    font-size: 1.8rem; /* Bigger English font for phones */
+  }
+  .first-page-names.kh {
+    font-size: 1.8rem;
+  }
+  .first-page-subtitle.kh {
+    font-size: 1.1rem;
+  }
+}
